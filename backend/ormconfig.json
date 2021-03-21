@@ -1,11 +1,10 @@
 {
   "type": "mysql",
-  "host": "device-management.c2gbi1gy4eg3.us-east-2.rds.amazonaws.com",
+  "host": "mysql.c2gbi1gy4eg3.us-east-2.rds.amazonaws.com",
   "port": 3306,
   "username": "admin",
-  "password": "devicemanagement1721",
-  "database": "device-management",
-  "connectTimeout": 10000,
+  "password": "admin1234",
+  "database": "db_devicemanager",
   "entities": [
     "./src/models/*.ts"
   ],
