@@ -1,14 +1,14 @@
 /* eslint-disable camelcase */
 import { Router } from 'express';
-import { getCustomRepository } from 'typeorm';
+import { getRepository } from 'typeorm';
 
-import CategoryRepository from '../repositories/CategoriesRepository';
+import Category from '../models/Category';
 import CreateCategoryService from '../services/CreateCategoryService';
 
 const categoriesRouter = Router();
 
 categoriesRouter.get('/', async (request, response) => {
-  const categoriesRepository = getCustomRepository(CategoryRepository);
+  const categoriesRepository = getRepository(Category);
   const categories = await categoriesRepository.find();
 
   return response.json(categories);
@@ -24,6 +24,14 @@ categoriesRouter.post('/', async (request, response) => {
   });
 
   return response.json(category);
+});
+
+categoriesRouter.delete('/', async (request, response) => {
+  const categoriesRepository = getRepository(Category);
+
+  await categoriesRepository.delete(request.params.id);
+
+  return response.json('Ok');
 });
 
 export default categoriesRouter;

@@ -1,8 +1,7 @@
 /* eslint-disable camelcase */
-import { getCustomRepository } from 'typeorm';
+import { getRepository } from 'typeorm';
 
 import Category from '../models/Category';
-import CategoryRepository from '../repositories/CategoriesRepository';
 
 interface Request {
   name: string;
@@ -10,13 +9,13 @@ interface Request {
 
 class CreateCategoryService {
   public async execute({ name }: Request): Promise<Category> {
-    const CategoriesRepository = getCustomRepository(CategoryRepository);
+    const categoriesRepository = getRepository(Category);
 
-    const category = CategoriesRepository.create({
+    const category = categoriesRepository.create({
       name,
     });
 
-    await CategoriesRepository.save(category);
+    await categoriesRepository.save(category);
 
     return category;
   }

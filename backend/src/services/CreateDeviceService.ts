@@ -16,15 +16,15 @@ class CreateDeviceService {
     color,
     partNumber,
   }: Request): Promise<Device> {
-    const DevicesRepository = getCustomRepository(DeviceRepository);
+    const devicesRepository = getCustomRepository(DeviceRepository);
 
-    const device = DevicesRepository.create({
+    const device = devicesRepository.create({
       category_id,
       color,
       partNumber,
     });
 
-    await DevicesRepository.save(device);
+    await devicesRepository.save(device);
 
     return device;
   }
