@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import {
   Entity,
   Column,
@@ -10,20 +11,13 @@ import {
 
 import Category from './Category';
 
-/**
- * Um para um(OneToOne)
- * Um para muitos(OneToMany)
- * Muitos para Muitos(ManyToMany)
- */
-
-@Entity('appointments')
+@Entity('devices')
 class Device {
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryGeneratedColumn('increment')
   id: string;
 
   @Column()
-  // eslint-disable-next-line camelcase
-  provider_id: string;
+  category_id: string;
 
   @ManyToOne(() => Category)
   // Define a forma de relacionamento de appointment para user
@@ -32,11 +26,9 @@ class Device {
   provider: Category;
 
   @CreateDateColumn()
-  // eslint-disable-next-line camelcase
   created_at: Date;
 
   @UpdateDateColumn()
-  // eslint-disable-next-line camelcase
   updated_at: Date;
 }
 
