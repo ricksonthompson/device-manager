@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import {
   Entity,
   Column,
@@ -6,20 +7,21 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
+import { MaxLength } from 'class-validator';
+
 @Entity('categories')
 class Category {
   @PrimaryGeneratedColumn('increment')
   id: number;
 
   @Column()
+  @MaxLength(136)
   name: string;
 
   @CreateDateColumn()
-  // eslint-disable-next-line camelcase
   created_at: Date;
 
   @UpdateDateColumn()
-  // eslint-disable-next-line camelcase
   updated_at: Date;
 }
 
