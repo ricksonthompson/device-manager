@@ -1,13 +1,17 @@
 /* eslint-disable camelcase */
 import { Router } from 'express';
+import { getCustomRepository } from 'typeorm';
 
-// import DeviceRepository from '../repositories/DevicesRepository';
+import DeviceRepository from '../repositories/DevicesRepository';
 import CreateDeviceService from '../services/CreateDeviceService';
 
 const devicesRouter = Router();
 
-devicesRouter.get('/', (_request, response) => {
-  return response.json({ ok: true });
+devicesRouter.get('/', async (request, response) => {
+  const devicesRepository = getCustomRepository(DeviceRepository);
+  const devices = await devicesRepository.find();
+
+  return response.json(devices);
 });
 
 devicesRouter.post('/', async (request, response) => {
