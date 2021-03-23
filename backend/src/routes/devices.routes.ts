@@ -39,16 +39,4 @@ devicesRouter.post(
   },
 );
 
-devicesRouter.delete('/', async (request, response) => {
-  const { id } = request.params;
-
-  const device_id = { id };
-
-  const devicesRepository = getCustomRepository(DeviceRepository);
-
-  await devicesRepository.delete(device_id);
-
-  return response.json({ msg: 'Device excluído com sucesso!' });
-});
-
 export default devicesRouter;

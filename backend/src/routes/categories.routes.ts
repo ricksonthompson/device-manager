@@ -3,7 +3,6 @@ import { Router } from 'express';
 import { getCustomRepository } from 'typeorm';
 
 import CategoryRepository from '../repositories/CategoriesRepository';
-import Category from '../models/Category';
 import CreateCategoryService from '../services/CreateCategoryService';
 
 const categoriesRouter = Router();
@@ -25,18 +24,6 @@ categoriesRouter.post('/', async (request, response) => {
   });
 
   return response.json(category);
-});
-
-categoriesRouter.delete('/', async (request, response) => {
-  const { id } = request.params;
-
-  const categories_id = { id };
-
-  const categoriesRepository = getCustomRepository(CategoryRepository);
-
-  await categoriesRepository.delete(categories_id);
-
-  return response.json({ msg: 'Category excluído com sucesso!' });
 });
 
 export default categoriesRouter;

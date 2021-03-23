@@ -1,4 +1,4 @@
-{
+module.exports = {
   "type": "mysql",
   "host": "mysql.c2gbi1gy4eg3.us-east-2.rds.amazonaws.com",
   "port": 3306,
