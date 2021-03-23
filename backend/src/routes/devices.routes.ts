@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import { Router } from 'express';
+import { Router, Request, Response } from 'express';
 import { getCustomRepository } from 'typeorm';
 import { body, validationResult } from 'express-validator';
 
@@ -18,7 +18,7 @@ devicesRouter.get('/', async (request, response) => {
 devicesRouter.post(
   '/',
   [body('color').isAlpha(), body('partNumber').isInt()],
-  async (request, response) => {
+  async (request: Request, response: Response) => {
     const errors = validationResult(request);
 
     if (!errors.isEmpty()) {

@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 import { Router } from 'express';
-import { getCustomRepository } from 'typeorm';
+import { getRepository } from 'typeorm';
 
 import CategoryRepository from '../repositories/CategoriesRepository';
 import CreateCategoryService from '../services/CreateCategoryService';
@@ -8,7 +8,7 @@ import CreateCategoryService from '../services/CreateCategoryService';
 const categoriesRouter = Router();
 
 categoriesRouter.get('/', async (request, response) => {
-  const categoriesRepository = getCustomRepository(CategoryRepository);
+  const categoriesRepository = getRepository(CategoryRepository);
   const categories = await categoriesRepository.find();
 
   return response.json(categories);

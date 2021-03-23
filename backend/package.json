@@ -7,22 +7,19 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "build": "tsc",
+    "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files",
     "dev:server": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules src/server.ts",
     "start": "node dist/server.js",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
   },
   "dependencies": {
-    "class-validator": "^0.13.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-async-errors": "^3.1.1",
     "express-validator": "^6.10.0",
     "mysql": "^2.18.1",
-    "pg": "^8.3.3",
     "reflect-metadata": "^0.1.13",
-    "typeorm": "^0.2.31",
-    "uuidv4": "^6.2.3"
+    "typeorm": "^0.2.31"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.10",
