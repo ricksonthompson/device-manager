@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import { Router, Request, Response } from 'express';
 import { getCustomRepository } from 'typeorm';
-import { body, validationResult } from 'express-validator';
+import { check, validationResult } from 'express-validator';
 
 import DeviceRepository from '../repositories/DevicesRepository';
 import CreateDeviceService from '../services/CreateDeviceService';
@@ -17,12 +17,23 @@ devicesRouter.get('/', async (request, response) => {
 
 devicesRouter.post(
   '/',
-  [body('color').isAlpha(), body('partNumber').isInt()],
+  [
+    check('color', 'Only letters are allowed').isAlpha(),
+    check('color', 'Number of characters must be greater than 4').isLength({
+      min: 4,
+    }),
+    check('color', 'Number of characters exceeds 16').isLength({ max: 16 }),
+    check('partNumber', 'Its not a positive whole field').isInt(),
+  ],
   async (request: Request, response: Response) => {
     const errors = validationResult(request);
 
     if (!errors.isEmpty()) {
-      return response.json({ errors: errors.array() });
+      const array: string[] = [];
+
+      errors.array().forEach(e => array.push(e.msg));
+
+      response.json({ mssg: array });
     }
 
     const { category_id, color, partNumber } = request.body;
