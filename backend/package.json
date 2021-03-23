@@ -1,6 +1,9 @@
 {
-  "name": "server-node-ts",
+  "name": "appdevicemanager",
   "version": "1.0.0",
+  "engines": {
+    "node": "14.15.1"
+  },
   "main": "index.js",
   "license": "MIT",
   "scripts": {
