@@ -19,7 +19,7 @@ class CreateCategoryService {
 
     const errors = await validate(category);
 
-    if (errors.length > 0) {
+    if (errors.length > 16) {
       throw new AppError('Number of characters is greater than 136.');
     }
 

@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
 import { Router } from 'express';
 import { getCustomRepository } from 'typeorm';
+import { body, validationResult } from 'express-validator';
 
 import DeviceRepository from '../repositories/DevicesRepository';
 import CreateDeviceService from '../services/CreateDeviceService';
@@ -14,18 +15,40 @@ devicesRouter.get('/', async (request, response) => {
   return response.json(devices);
 });
 
-devicesRouter.post('/', async (request, response) => {
-  const { category_id, color, partNumber } = request.body;
+devicesRouter.post(
+  '/',
+  [body('color').isAlpha(), body('partNumber').isInt()],
+  async (request, response) => {
+    const errors = validationResult(request);
 
-  const createDevice = new CreateDeviceService();
+    if (!errors.isEmpty()) {
+      return response.json({ errors: errors.array() });
+    }
 
-  const device = await createDevice.execute({
-    category_id,
-    color,
-    partNumber,
-  });
+    const { category_id, color, partNumber } = request.body;
 
-  return response.json(device);
+    const createDevice = new CreateDeviceService();
+
+    const device = await createDevice.execute({
+      category_id,
+      color,
+      partNumber,
+    });
+
+    return response.json(device);
+  },
+);
+
+devicesRouter.delete('/', async (request, response) => {
+  const { id } = request.params;
+
+  const device_id = { id };
+
+  const devicesRepository = getCustomRepository(DeviceRepository);
+
+  await devicesRepository.delete(device_id);
+
+  return response.json({ msg: 'Device excluído com sucesso!' });
 });
 
 export default devicesRouter;

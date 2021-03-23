@@ -9,8 +9,6 @@ import {
   JoinColumn,
 } from 'typeorm';
 
-import { MaxLength } from 'class-validator';
-
 import Category from './Category';
 
 @Entity('devices')
@@ -19,7 +17,7 @@ class Device {
   id: string;
 
   @Column()
-  category_id: string;
+  category_id: number;
 
   @ManyToOne(() => Category)
   // Define a forma de relacionamento de appointment para user
@@ -28,11 +26,10 @@ class Device {
   category: Category;
 
   @Column()
-  @MaxLength(16)
   color: string;
 
   @Column()
-  partNumber: string;
+  partNumber: number;
 
   @CreateDateColumn()
   created_at: Date;

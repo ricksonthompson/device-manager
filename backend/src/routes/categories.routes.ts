@@ -1,14 +1,15 @@
 /* eslint-disable camelcase */
 import { Router } from 'express';
-import { getRepository } from 'typeorm';
+import { getCustomRepository } from 'typeorm';
 
+import CategoryRepository from '../repositories/CategoriesRepository';
 import Category from '../models/Category';
 import CreateCategoryService from '../services/CreateCategoryService';
 
 const categoriesRouter = Router();
 
 categoriesRouter.get('/', async (request, response) => {
-  const categoriesRepository = getRepository(Category);
+  const categoriesRepository = getCustomRepository(CategoryRepository);
   const categories = await categoriesRepository.find();
 
   return response.json(categories);
@@ -27,11 +28,15 @@ categoriesRouter.post('/', async (request, response) => {
 });
 
 categoriesRouter.delete('/', async (request, response) => {
-  const categoriesRepository = getRepository(Category);
+  const { id } = request.params;
 
-  await categoriesRepository.delete(request.params.id);
+  const categories_id = { id };
 
-  return response.json('Ok');
+  const categoriesRepository = getCustomRepository(CategoryRepository);
+
+  await categoriesRepository.delete(categories_id);
+
+  return response.json({ msg: 'Category excluído com sucesso!' });
 });
 
 export default categoriesRouter;

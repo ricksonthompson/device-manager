@@ -7,15 +7,12 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-import { MaxLength } from 'class-validator';
-
 @Entity('categories')
 class Category {
   @PrimaryGeneratedColumn('increment')
   id: number;
 
   @Column()
-  @MaxLength(136)
   name: string;
 
   @CreateDateColumn()
