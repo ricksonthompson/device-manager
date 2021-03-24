@@ -1,7 +1,5 @@
-![](C:\Users\Rickson\Desktop\Sem título-1.png)
-
 <h3 align="center">
-  Sistema web de gerenciamento de dispositivos
+  App Device Manager
 </h3>
 
 <blockquote align="center">“Só deseje as coisas as quais você está disposto a lutar!"</blockquote>
