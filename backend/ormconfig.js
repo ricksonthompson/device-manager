@@ -6,6 +6,7 @@ module.exports = {
   "password": "admin1234",
   "database": "db_devicemanager",
   "entities": [
+    //"./src/models/*{.ts,.js}" para rodar local
     "./dist/models/*{.ts,.js}"
   ],
   "migrations": [
