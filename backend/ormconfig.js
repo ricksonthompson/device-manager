@@ -6,12 +6,12 @@ module.exports = {
   "password": "admin1234",
   "database": "db_devicemanager",
   "entities": [
-    "./src/models/*.ts"
+    "./dist/models/*{.ts,.js}"
   ],
   "migrations": [
-    "./src/database/migrations/*.ts"
+    "./dist/database/migrations/*{.ts,.js}"
   ],
   "cli": {
-    "migrationsDir": "./src/database/migrations"
+    "migrationsDir": "./dist/database/migrations"
   }
   }
