@@ -63,7 +63,7 @@ yarn dev:server
 
 Prontinho, agora é só "brincar"!:computer:
 
-Abaixo listei as rotas,  e os parâemetros e o compotamentos de cada uma delas.
+Abaixo listei as rotas,  e os parâmetros e os comportamentos de cada uma delas.
 
 Recomendo a utilização do [Insomnia](https://insomnia.rest/download) para fazer as requisições.
 
