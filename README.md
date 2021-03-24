@@ -14,7 +14,7 @@
 
 ## :rocket: Sobre o desafio
 
-Nesse desafio, desenvolvi uma aplicação de gerenciamento de dispositivos, treinando os meus conhecimentos em NodeJS junto ao TypeScript, incluindo o uso de banco de dados com TypeORM.
+Nesse desafio, desenvolvi uma aplicação de gerenciamento de dispositivos, demonstrando os meus conhecimentos em NodeJS junto ao TypeScript, incluindo o uso de banco de dados com TypeORM.
 
 Essa aplicação armazena dispositivos e categorias e permite o cadastro dos mesmos.
 
