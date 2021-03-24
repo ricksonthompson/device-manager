@@ -6,7 +6,7 @@ module.exports = {
   "password": "admin1234",
   "database": "db_devicemanager",
   "entities": [
-    "./src/models/*{.ts,.js}"
+    "./dist/models/*{.ts,.js}"
   ],
   "migrations": [
     "./dist/database/migrations/*{.ts,.js}"
